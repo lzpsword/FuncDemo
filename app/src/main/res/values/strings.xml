@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">FuncDemo</string>
+    <string name="app_name" translatable="false">FuncDemo</string>
+    <string name="cancel">Cancel</string>
+    <string name="demo" translatable="false">Demo</string>
+    <string name="battery" translatable="false">battery</string>
+    <string name="copyfile">CopyFile</string>
+    <string name="clear_msg">Clear Message</string>
+    <string name="power_level">PowerLevel</string>
 </resources>

@@ -18,13 +18,13 @@
                 android:id="@+id/demo"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="demo"/>
+                android:text="@string/demo"/>
 
             <Button
                 android:id="@+id/battery"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="battery" />
+                android:text="@string/battery" />
 
         </LinearLayout>
 

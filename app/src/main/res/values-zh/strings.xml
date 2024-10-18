@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">取消</string>
+    <string name="copyfile">拷贝文件</string>
+    <string name="clear_msg">清空信息</string>
+    <string name="power_level">读取电量</string>
+</resources>

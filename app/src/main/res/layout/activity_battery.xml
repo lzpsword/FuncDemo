@@ -19,7 +19,7 @@
                 android:id="@+id/battery_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="读取电量" />
+                android:text="@string/power_level" />
 
         </LinearLayout>
     </ScrollView>
@@ -41,7 +41,7 @@
                 android:id="@+id/battery_clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="清空" />
+                android:text="@string/clear_msg" />
 
             <TextView
                 android:id="@+id/battery_result"
