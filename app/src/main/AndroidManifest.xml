@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FuncDemo"
         tools:targetApi="31">
+
+
+
         <activity
             android:name=".MainActivity"
+            android:directBootAware="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +25,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
+
         <activity android:name=".activity.DemoActivity"/>
         <activity android:name=".activity.BatteryActivity"/>
+        <activity android:name=".activity.DpmsActivity"/>
+
+        <receiver
+            android:name=".receiver.CTDeviceAdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_receiver" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.ResetPasswordReceiver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="com.example.funcdemo.RESETPW" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
