@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Button
+                android:id="@+id/dpms_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="isDeviceOwner" />
+
+            <Button
+                android:id="@+id/dpms_active_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="active admin" />
+
+            <Button
+                android:id="@+id/dpms_reset_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset Password" />
+
+            <Button
+                android:id="@+id/dpms_set_reset_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set ResetToken" />
+
+            <Button
+                android:id="@+id/dpms_reset_pw_with_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset password with token" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ScrollView
+        android:layout_width="0px"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <Button
+                android:id="@+id/dpms_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清空" />
+
+            <TextView
+                android:id="@+id/dpms_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black_pearl"
+                android:text="" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

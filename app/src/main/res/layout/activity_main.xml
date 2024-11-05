@@ -26,6 +26,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/battery" />
 
+            <Button
+                android:id="@+id/dpms"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="dpms" />
+
         </LinearLayout>
 
     </ScrollView>

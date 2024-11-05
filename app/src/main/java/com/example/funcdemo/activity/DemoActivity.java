@@ -15,6 +15,8 @@ import com.example.funcdemo.base.BaseActivity;
 import com.example.funcdemo.utils.AssetUtil;
 import com.example.funcdemo.utils.InputDialogUtil;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
