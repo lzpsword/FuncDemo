@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="240dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/input1_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="inputname1:" />
+
+    <EditText
+        android:id="@+id/input1_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:baselineAligned="false"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        tools:ignore="LabelFor" />
+</LinearLayout>
