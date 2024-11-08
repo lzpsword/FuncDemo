@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.funcdemo.R;
 import com.example.funcdemo.base.BaseActivity;
 import com.example.funcdemo.receiver.CTDeviceAdminReceiver;
+import com.example.funcdemo.utils.InputDialogUtil;
 
 public class DpmsActivity extends BaseActivity
 		implements  View.OnClickListener {
@@ -61,57 +63,53 @@ public class DpmsActivity extends BaseActivity
 	@Override
 	public void onClick(View view) {
 		boolean ret = false;
-		switch (view.getId()) {
-			case R.id.dpms_btn1:
-				boolean isAdminActive = mDPMS.isAdminActive(mDeviceAdminReceiver);
-				boolean isDeviceOwner = mDPMS.isDeviceOwnerApp("com.example.funcdemo");
-				showMsg("deviceOwner=" + isDeviceOwner + ";adminActive=" + isAdminActive);
-//				Log.i("neil", "show Loading 1233213");
-//				addLoadingMask("拷贝中，请稍后", false);
-//				ExecutorService executor = Executors.newFixedThreadPool(2);
-//				executor.execute(new Runnable() {
-//					@Override
-//					public void run() {
-//						AssetUtil.copyFilefromAssets(getAppContext(), "test.zip");
-//						try {
-//							Thread.sleep(3000);
-//						} catch (InterruptedException e) {
-//							e.printStackTrace();
-//						}
-//						Log.i(TAG, "shwo ok11");
-//						showMsg("ok");
-//
-//					}
-//				});
-				break;
-			case R.id.dpms_active_admin:
-				activeDeviceAdmin();
-				break;
-			case R.id.dpms_reset_password:
-				Log.i(TAG, "reset password to null");
-				mDPMS.resetPassword("", 0);
-				Log.i(TAG, "reset password end");
-				break;
-			case R.id.dpms_set_reset_token:
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-					Log.i(TAG, "set reset token 32bit");
-					ret = mDPMS.setResetPasswordToken(mDeviceAdminReceiver, mResetToken.getBytes());
-					showMsg("Set reset token ret=" + ret);
-					Log.i(TAG, "set reset token 32bit end");
+        int id = view.getId();
+        if (id == R.id.dpms_btn1) {
+            boolean isAdminActive = mDPMS.isAdminActive(mDeviceAdminReceiver);
+            boolean isDeviceOwner = mDPMS.isDeviceOwnerApp("com.example.funcdemo");
+            showMsg("deviceOwner=" + isDeviceOwner + ";adminActive=" + isAdminActive);
+        } else if (id == R.id.dpms_active_admin) {
+            activeDeviceAdmin();
+        } else if (id == R.id.dpms_reset_password) {
+            InputDialogUtil.showInputDialog(this, "重置密码", "密码", InputType.TYPE_CLASS_NUMBER, inputText -> {
+                if (inputText.isEmpty()) {
+                    showMsg("reset password to null");
+                    Log.i(TAG, "reset password to null");
+                } else {
+                    showMsg("reset password to [" + inputText + "]");
+                    Log.i(TAG, "reset password to [" + inputText + "]");
+                }
+
+				boolean tmp = mDPMS.resetPassword(inputText, 0);
+				Log.i(TAG, "reset password ret=" + tmp);
+				showMsg("reset password ret=" + tmp);
+            });
+        } else if (id == R.id.dpms_set_reset_token) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Log.i(TAG, "set reset token 32bit");
+                ret = mDPMS.setResetPasswordToken(mDeviceAdminReceiver, mResetToken.getBytes());
+                showMsg("Set reset token ret=" + ret);
+                Log.i(TAG, "set reset token 32bit end");
+            }
+        } else if (id == R.id.dpms_reset_pw_with_token) {
+			InputDialogUtil.showInputDialog(this, "重置密码", "密码", InputType.TYPE_CLASS_NUMBER, inputText -> {
+				if (inputText.isEmpty()) {
+					showMsg("reset password to null");
+					Log.i(TAG, "reset password to null");
+				} else {
+					showMsg("reset password to [" + inputText + "]");
+					Log.i(TAG, "reset password to [" + inputText + "]");
 				}
-				break;
-			case R.id.dpms_reset_pw_with_token:
+
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-					ret = mDPMS.resetPasswordWithToken(mDeviceAdminReceiver, "4321", mResetToken.getBytes(), 0);
-					Log.i(TAG, "resetPasswordWithToken password=4321 ret=" + ret);
-					showMsg("resetPasswordWithToken password=4321 ret=" + ret);
+					boolean tmp = mDPMS.resetPasswordWithToken(mDeviceAdminReceiver, inputText, mResetToken.getBytes(), 0);
+					Log.i(TAG, "resetPasswordWithToken password=[" + inputText + "]; ret=" + tmp);
+					showMsg("resetPasswordWithToken password=[" + inputText + "]; ret=" + tmp);
 				}
-				break;
-			case R.id.dpms_clear:
-				clearDisplay();
-				break;
-			default:
-				break;
-		}
+			});
+
+        } else if (id == R.id.dpms_clear) {
+            clearDisplay();
+        }
 	}
 }
