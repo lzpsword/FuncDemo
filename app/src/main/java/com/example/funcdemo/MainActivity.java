@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.example.funcdemo.activity.BatteryActivity;
 import com.example.funcdemo.activity.DemoActivity;
 import com.example.funcdemo.activity.DpmsActivity;
+import com.example.funcdemo.activity.TlsActivity;
 import com.example.funcdemo.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements  View.OnClickListener {
@@ -23,26 +26,25 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
         findViewById(R.id.demo).setOnClickListener(this);
         findViewById(R.id.battery).setOnClickListener(this);
         findViewById(R.id.dpms).setOnClickListener(this);
+        findViewById(R.id.tls).setOnClickListener(this);
     }
 
 
     @Override
-    public void onClick(View view) {
+    public void onClick(@NonNull View view) {
         Intent intent = new Intent();
-        switch (view.getId()) {
-            case R.id.demo:
-                intent.setClass(this, DemoActivity.class);
-                break;
-            case R.id.battery:
-                Log.i(TAG, "fdsadfd ");
-                intent.setClass(this, BatteryActivity.class);
-                break;
-            case R.id.dpms:
-                Log.i(TAG, "dpms");
-                intent.setClass(this, DpmsActivity.class);
-//                return;
-            default:
-                break;
+        int id = view.getId();
+        if (id == R.id.demo) {
+            intent.setClass(this, DemoActivity.class);
+        } else if (id == R.id.battery) {
+            Log.i(TAG, "fdsadfd ");
+            intent.setClass(this, BatteryActivity.class);
+        } else if (id == R.id.dpms) {
+            Log.i(TAG, "dpms");
+            intent.setClass(this, DpmsActivity.class);
+        } else if (id == R.id.tls) {
+            Log.i(TAG, "tls");
+            intent.setClass(this, TlsActivity.class);
         }
         startActivity(intent);
     }
@@ -56,7 +58,5 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);
     }
-
-
 
 }
