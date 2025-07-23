@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import com.example.funcdemo.activity.BatteryActivity;
 import com.example.funcdemo.activity.DemoActivity;
 import com.example.funcdemo.activity.DpmsActivity;
+import com.example.funcdemo.activity.LightHalActivity;
 import com.example.funcdemo.activity.TlsActivity;
 import com.example.funcdemo.base.BaseActivity;
 
@@ -27,6 +28,7 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
         findViewById(R.id.battery).setOnClickListener(this);
         findViewById(R.id.dpms).setOnClickListener(this);
         findViewById(R.id.tls).setOnClickListener(this);
+        findViewById(R.id.light_hal).setOnClickListener(this);
     }
 
 
@@ -45,6 +47,9 @@ public class MainActivity extends BaseActivity implements  View.OnClickListener 
         } else if (id == R.id.tls) {
             Log.i(TAG, "tls");
             intent.setClass(this, TlsActivity.class);
+        } else if (id == R.id.light_hal) {
+            Log.i(TAG, "light_hal");
+            intent.setClass(this, LightHalActivity.class);
         }
         startActivity(intent);
     }

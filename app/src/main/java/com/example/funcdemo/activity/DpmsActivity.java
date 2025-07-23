@@ -71,7 +71,7 @@ public class DpmsActivity extends BaseActivity
         } else if (id == R.id.dpms_active_admin) {
             activeDeviceAdmin();
         } else if (id == R.id.dpms_reset_password) {
-            InputDialogUtil.showInputDialog(this, "重置密码", "密码", InputType.TYPE_CLASS_NUMBER, inputText -> {
+            InputDialogUtil.showTextInputDialog(this, "重置密码", "密码", inputText -> {
                 if (inputText.isEmpty()) {
                     showMsg("reset password to null");
                     Log.i(TAG, "reset password to null");
@@ -92,7 +92,7 @@ public class DpmsActivity extends BaseActivity
                 Log.i(TAG, "set reset token 32bit end");
             }
         } else if (id == R.id.dpms_reset_pw_with_token) {
-			InputDialogUtil.showInputDialog(this, "重置密码", "密码", InputType.TYPE_CLASS_NUMBER, inputText -> {
+			InputDialogUtil.showTextInputDialog(this, "重置密码", "密码", inputText -> {
 				if (inputText.isEmpty()) {
 					showMsg("reset password to null");
 					Log.i(TAG, "reset password to null");

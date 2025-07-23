@@ -1,13 +1,7 @@
 package com.example.funcdemo.activity;
-
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.text.InputType;
 import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.funcdemo.R;
@@ -15,8 +9,6 @@ import com.example.funcdemo.base.BaseActivity;
 import com.example.funcdemo.utils.AssetUtil;
 import com.example.funcdemo.utils.InputDialogUtil;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -60,7 +52,7 @@ public class DemoActivity extends BaseActivity
 				}
 			});
 		} else if (id == R.id.demo_input_dialog) {
-			InputDialogUtil.showInputDialog(this, "Input", "Enter something", InputType.TYPE_CLASS_NUMBER, inputText -> {
+			InputDialogUtil.showTextInputDialog(this, "Input", "Enter something", inputText -> {
 				showMsg("You entered: " + inputText);
 			});
         } else if (id == R.id.clear) {

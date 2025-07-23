@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FuncDemo"
+        android:theme="@android:style/Theme.Light"
         tools:targetApi="31">
 
 
@@ -33,6 +33,7 @@
         <activity android:name=".activity.BatteryActivity"/>
         <activity android:name=".activity.DpmsActivity"/>
         <activity android:name=".activity.TlsActivity"/>
+        <activity android:name=".activity.LightHalActivity"/>
 
         <receiver
             android:name=".receiver.CTDeviceAdminReceiver"
